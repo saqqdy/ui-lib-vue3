@@ -4,8 +4,8 @@
         <text></text>
     </button>
 </template>
-<script>
-import { nextIndex } from 'ui-lib-vue3-ts-demo/packages/utils/nextIndex'
+<script lang="ts">
+import { nextIndex } from 'ui-lib-vue3/packages/utils/nextIndex'
 export default {
     name: 'WlButton',
     props: {

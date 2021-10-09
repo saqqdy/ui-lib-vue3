@@ -5,6 +5,6 @@ function resolve(dir) {
 module.exports = {
     lintOnSave: false,
     chainWebpack: config => {
-        config.resolve.alias.set('@', resolve('./src')).set('ui-lib-vue3-ts-demo', resolve('../'))
+        config.resolve.alias.set('@', resolve('./src')).set('ui-lib-vue3', resolve('../'))
     }
 }

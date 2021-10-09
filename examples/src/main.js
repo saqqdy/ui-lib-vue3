@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import UILibVue3TSDemo from '../../'
-import UILibVue3TSDemoButton from '../../lib/button'
+import UILIBVUE3 from '../../'
+import UILIBVUE3Button from '../../lib/button'
 import '../../lib/style/index.css'
 import router from './router'
 import store from './store'
@@ -10,8 +10,8 @@ import esmbutton from '../../es/button.js'
 
 Vue.config.productionTip = false
 
-console.log(UILibVue3TSDemo, UILibVue3TSDemoButton, esm, esmbutton)
-Vue.use(UILibVue3TSDemo)
+console.log(UILIBVUE3, UILIBVUE3Button, esm, esmbutton)
+Vue.use(UILIBVUE3)
 
 new Vue({
     router,

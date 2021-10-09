@@ -41,9 +41,9 @@ module.exports = {
                 [
                     'babel-plugin-module-resolver',
                     {
-                        root: ['ui-lib-vue3-ts-demo'],
+                        root: ['ui-lib-vue3'],
                         alias: {
-                            '@ui-lib-vue3-ts-demo': 'ui-lib-vue3-ts-demo/lib'
+                            '@ui-lib-vue3': 'ui-lib-vue3/lib'
                         }
                     }
                 ]
