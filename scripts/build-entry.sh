@@ -18,7 +18,7 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         echo "import $first$second from './$m';" >>packages/index.js
     fi
 done
@@ -48,13 +48,13 @@ for m in $dir; do
 
     # -a=与 -o=或 && ||
     # if [ ! -f "./packages/$m/$m.js" ]; then
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         echo "Vue.component($first$second.name, $first$second);" >>packages/index.js
     fi
 done
 
 echo "
-Vue.prototype.\$UILIBVUE3TSDEMO = {
+Vue.prototype.\$UILIBVUE3 = {
     size: opts.size || '',
     zIndex: opts.zIndex || 5000,
 };" >>packages/index.js
@@ -114,7 +114,7 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         echo "$first$second," >>packages/index.js
     fi
 done

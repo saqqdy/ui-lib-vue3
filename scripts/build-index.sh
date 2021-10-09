@@ -17,7 +17,7 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    if [ $m != "utils" ] && [ $m != "style" ]; then
+    if [ $m != "utils" ] && [ $m != "styles" ]; then
         touch packages/$m/index.js
         if [ -f "./packages/$m/$m.vue" ]; then
             fileName="$m.vue"

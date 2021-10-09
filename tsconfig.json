@@ -1,22 +1,21 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "naive-ui": ["./src"]
-    },
-    "strict": true,
-    "strictNullChecks": true,
-    "jsx": "react",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
-    "module": "ES6",
-    "moduleResolution": "Node",
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "composite": true,
-    "target": "ES6",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ]
-  }
+ "compilerOptions": {
+   "module": "ESNext",
+   "declaration": true,
+   "noImplicitAny": false,
+   "removeComments": true,
+   "moduleResolution": "node",
+   "esModuleInterop": true,
+   "jsx": "preserve",
+   "noLib": false,
+   "target": "es6",
+   "sourceMap": true,
+   "lib": [
+     "ESNext", "DOM"
+   ],
+   "allowSyntheticDefaultImports": true
+ },
+ "exclude": [
+   "node_modules"
+ ]
 }
