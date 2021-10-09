@@ -14,8 +14,8 @@ module.exports = {
     mode: 'production',
     entry: Components,
     output: {
-        path: path.resolve(process.cwd(), './lib'),
-        publicPath: publicPath,
+        path: path.resolve(process.cwd(), './dist'),
+        publicPath,
         filename: '[name].js',
         chunkFilename: '[id].js',
         libraryTarget: 'commonjs2'
@@ -78,7 +78,7 @@ module.exports = {
                     {
                         loader: 'style-resources-loader',
                         options: {
-                            patterns: path.resolve(__dirname, '../packages/style/var.less')
+                            patterns: path.resolve(__dirname, '../packages/styles/var.less')
                         }
                     }
                 ]
@@ -94,5 +94,5 @@ module.exports = {
             }
         ]
     },
-    plugins: plugins
+    plugins
 }

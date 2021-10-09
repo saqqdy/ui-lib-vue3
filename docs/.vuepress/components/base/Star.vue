@@ -13,7 +13,7 @@ export default {
     name: 'BaseStar',
     methods: {
         starGithub() {
-            window.open('http://github.com/saqqdy/ui-lib-vue3-ts-demo')
+            window.open('http://github.com/saqqdy/ui-lib-vue3')
         }
     }
 }

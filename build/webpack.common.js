@@ -8,7 +8,7 @@ const config = require('./config')
 let plugins = [new ProgressBarPlugin(), new VueLoaderPlugin()],
     publicPath = process.env.PUBLIC_PATH || ''
 if (process.env.ANALAYZ_REPORT) plugins.push(new BundleAnalyzerPlugin())
-if (Boolean(process.env.WEBPACK_DEV_SERVER)) publicPath = 'https://127.0.0.1:9000' + publicPath
+if (process.env.WEBPACK_DEV_SERVER) publicPath = 'https://127.0.0.1:9000' + publicPath
 // __webpack_public_path__ = publicPath;
 module.exports = {
     mode: 'production',
@@ -23,12 +23,12 @@ module.exports = {
         port: 9000
     },
     output: {
-        path: path.resolve(process.cwd(), './lib'),
-        publicPath: publicPath,
+        path: path.resolve(process.cwd(), './dist'),
+        publicPath,
         filename: 'index.cmd.js',
         chunkFilename: '[id].js',
         libraryExport: 'default',
-        library: 'UILIBVUE3TSDEMO',
+        library: 'UILIBVUE3',
         libraryTarget: 'commonjs2',
         sourceMapFilename: 'index.cmd.js.map'
     },
@@ -78,7 +78,7 @@ module.exports = {
                     {
                         loader: 'style-resources-loader',
                         options: {
-                            patterns: path.resolve(__dirname, '../packages/style/var.less')
+                            patterns: path.resolve(__dirname, '../packages/styles/var.less')
                         }
                     }
                 ]
@@ -94,5 +94,5 @@ module.exports = {
             }
         ]
     },
-    plugins: plugins
+    plugins
 }

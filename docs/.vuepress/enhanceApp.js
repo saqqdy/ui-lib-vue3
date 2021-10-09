@@ -4,7 +4,7 @@
 
 //引入自己的组件库
 // import '../../src/css/var.less';
-// import UILibVue3TSDemo from '../../';
+// import UILIBVUE3 from '../../';
 
 //vue代码高亮显示库 VueHighlightJS
 // import VueHighlightJS from 'vue-highlight.js';
@@ -29,7 +29,7 @@ export default ({
     // ...做一些其他的应用级别的优化
     // Vue.use(ElementUI);
     // Vue.use(VueHighlightJS);
-    // import('../../').then(UILibVue3TSDemo => {
-    // 	Vue.use(UILibVue3TSDemo.default);
+    // import('../../').then(UILIBVUE3 => {
+    // 	Vue.use(UILIBVUE3.default);
     // });
 }

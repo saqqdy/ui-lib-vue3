@@ -6,9 +6,9 @@
 
 ```shell
 # 通过yarn安装
-yarn add ui-lib-vue3-ts-demo
+yarn add ui-lib-vue3
 # 或者通过npm安装
-npm install -S ui-lib-vue3-ts-demo
+npm install -S ui-lib-vue3
 ```
 
 ## CDN <Badge text="即将支持"/>
@@ -17,9 +17,9 @@ npm install -S ui-lib-vue3-ts-demo
 
 ```html
 <!-- 引入组件库 -->
-<script src="https://unpkg.com/ui-lib-vue3-ts-demo/lib/index.js"></script>
+<script src="https://unpkg.com/ui-lib-vue3/lib/index.js"></script>
 ```
 
 ::: tip
-建议使用 CDN 引入 ui-lib-vue3-ts-demo 的用户在链接地址上锁定版本，以免将来升级时受到非兼容性更新的影响。
+建议使用 CDN 引入 ui-lib-vue3 的用户在链接地址上锁定版本，以免将来升级时受到非兼容性更新的影响。
 :::

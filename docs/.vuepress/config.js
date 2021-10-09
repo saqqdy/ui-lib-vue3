@@ -9,9 +9,9 @@ function resolve(dir) {
 }
 
 module.exports = {
-    title: 'UILibVue3TSDemo',
+    title: 'UILIBVUE3',
     description: '组件库demo',
-    base: '/ui-lib-vue3-ts-demo/',
+    base: '/ui-lib-vue3/',
     dest: './.vuepress/dist',
     theme: '@vuepress/default',
     themeConfig: {
@@ -43,12 +43,12 @@ module.exports = {
                         items: [
                             {
                                 text: 'HomePage',
-                                link: 'http://github.com/saqqdy/ui-lib-vue3-ts-demo#readme',
+                                link: 'http://github.com/saqqdy/ui-lib-vue3#readme',
                                 target: '_blank'
                             },
                             {
                                 text: 'Bugs',
-                                link: 'http://github.com/saqqdy/ui-lib-vue3-ts-demo/issues',
+                                link: 'http://github.com/saqqdy/ui-lib-vue3/issues',
                                 target: '_blank'
                             }
                         ]
@@ -136,13 +136,13 @@ module.exports = {
         },
         lastUpdated: '最近更新',
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-        repo: 'http://github.com/saqqdy/ui-lib-vue3-ts-demo.git',
+        repo: 'http://github.com/saqqdy/ui-lib-vue3.git',
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
         // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
         repoLabel: '查看源码',
         // 以下为可选的编辑链接选项
         // 假如你的文档仓库和项目本身不在一个仓库：
-        docsRepo: 'http://github.com/saqqdy/ui-lib-vue3-ts-demo',
+        docsRepo: 'http://github.com/saqqdy/ui-lib-vue3',
         // 假如文档不是放在仓库的根目录下：
         docsDir: 'docs',
         // 假如文档放在一个特定的分支下：
@@ -157,12 +157,12 @@ module.exports = {
         // 作为特例，默认语言可以使用 '/' 作为其路径。
         '/en/': {
             lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
-            title: 'UILibVue3TSDemo',
+            title: 'UILIBVUE3',
             description: '组件库demo'
         },
         '/': {
             lang: 'zh-CN',
-            title: 'UILibVue3TSDemo',
+            title: 'UILIBVUE3',
             description: '组件库demo'
         }
     },
@@ -219,7 +219,7 @@ module.exports = {
                 platform: 'github',
                 // owner与repo配置 https://github.com/${owner}/${repo}
                 owner: 'saqqdy',
-                repo: 'ui-lib-vue3-ts-demo',
+                repo: 'ui-lib-vue3',
                 // 填写自己的OAuth App 信息。详见https://vssue.js.org/zh/options/#repo
                 clientId: '',
                 clientSecret: '',
@@ -268,7 +268,7 @@ module.exports = {
         // 	api(app);
         // },
         proxy: {
-            '/ui-lib-vue3-ts-demo/': {
+            '/ui-lib-vue3/': {
                 target: 'http://127.0.0.1:8080',
                 changeOrigin: true,
                 pathRewrite: {}

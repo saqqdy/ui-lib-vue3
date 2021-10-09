@@ -2,7 +2,7 @@
 
 ## 浏览器
 
-UILibVue3TSDemo 兼容主流的 Chrome、Firefox、IE11+浏览器，为了获得最佳的体验，建议使用 Chrome 浏览器
+UILIBVUE3 兼容主流的 Chrome、Firefox、IE11+浏览器，为了获得最佳的体验，建议使用 Chrome 浏览器
 
 | 浏览器   | 兼容性   | 备注 |
 | -------- | -------- | ---- |

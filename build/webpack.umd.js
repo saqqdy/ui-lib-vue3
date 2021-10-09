@@ -16,7 +16,7 @@ let plugins = [
     ],
     publicPath = process.env.PUBLIC_PATH || ''
 if (process.env.ANALAYZ_REPORT) plugins.push(new BundleAnalyzerPlugin())
-if (Boolean(process.env.WEBPACK_DEV_SERVER)) publicPath = 'https://127.0.0.1:9000' + publicPath
+if (process.env.WEBPACK_DEV_SERVER) publicPath = 'https://127.0.0.1:9000' + publicPath
 
 module.exports = {
     mode: 'production',
@@ -31,13 +31,13 @@ module.exports = {
         port: 9000
     },
     output: {
-        path: path.resolve(process.cwd(), './lib'),
-        publicPath: publicPath,
+        path: path.resolve(process.cwd(), './dist'),
+        publicPath,
         filename: 'index.js',
         chunkFilename: '[id].js',
         libraryTarget: 'umd',
         libraryExport: 'default',
-        library: 'UILIBVUE3TSDEMO',
+        library: 'UILIBVUE3',
         umdNamedDefine: true,
         globalObject: "typeof self !== 'undefined' ? self : this"
     },
@@ -57,7 +57,7 @@ module.exports = {
         children: false
     },
     optimization: {
-        minimize: !Boolean(process.env.BUILD_WATCH || false),
+        minimize: !(process.env.BUILD_WATCH || false),
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i
@@ -124,7 +124,7 @@ module.exports = {
                     {
                         loader: 'style-resources-loader',
                         options: {
-                            patterns: path.resolve(__dirname, '../packages/style/var.less')
+                            patterns: path.resolve(__dirname, '../packages/styles/var.less')
                         }
                     }
                 ]
@@ -140,5 +140,5 @@ module.exports = {
             }
         ]
     },
-    plugins: plugins
+    plugins
 }
