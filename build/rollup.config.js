@@ -1,4 +1,3 @@
-const fs = require('fs')
 import vue from 'rollup-plugin-vue'
 import css from 'rollup-plugin-css-only'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -6,7 +5,7 @@ import esbuild from 'rollup-plugin-esbuild'
 import path from 'path'
 import pkg from '../package.json'
 
-const components = require('../components.json')
+import components from '../components.json'
 const deps = Object.keys(pkg.dependencies)
 
 const noWlPrefixFile = /(utils|styles|hooks)/

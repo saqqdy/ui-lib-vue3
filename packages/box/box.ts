@@ -1,40 +1,64 @@
-import Vue from 'vue'
+import { App, render, createVNode } from 'vue'
+import { v4 as uuidv4 } from 'uuid'
+import { nextIndex, extend } from 'js-cool'
 import tmp from './box.vue'
 
-const defaultOpt = {
+const defaults = {
+    opacity: 0.4,
     title: '提示',
-    width: '800px',
+    width: '640px',
     height: '360px',
-    confirmName: '确定',
-    cancelName: '取消',
-    showConfirm: true,
-    showCancel: true,
+    message: null,
+    okBtnName: '确定',
+    cancelBtnName: '取消',
+    defaultMax: false,
+    showOkBtn: true,
+    showCancelBtn: true,
     showClose: true,
     showHeader: true,
-    showBtns: true,
-    template: null
+    showBtn: true,
+    showMax: true,
+    options: {}
 }
 
-/**
- * @param opt
- */
-export default function box(opt) {
-    const vueConstructor = Vue.extend(Object.assign({ router: this.$router, store: this.$store }, tmp))
-    let instance = new vueConstructor({
-        el: document.createElement('div'),
-        props: {}
-    })
-    document.body.appendChild(instance.$el)
-    instance.options = Object.assign({}, defaultOpt, opt)
-
-    Vue.nextTick(() => {
-        instance.visible = true
-    })
-    Vue.$plugin.push({
-        name: 'PluginBox',
-        id: instance._uid,
-        instance: instance
-    })
-
-    return instance
+class Box {
+    $el: any
+    instance: any
+    constructor(app: App, component, options) {
+        options = extend(true, {}, defaults, options)
+        this.$el = document.createElement('div')
+        this.$el.className = 'mask'
+        this.$el.style.zIndex = nextIndex()
+        this.$el.style.background = 'rgba(0, 0, 0, ' + options.opacity + ')'
+        this.$el.id = uuidv4()
+        this.instance = createVNode(tmp)
+        this.instance.props = {
+            ...options,
+            component,
+            hide: () => {
+                this.hide()
+            }
+        }
+        document.body.appendChild(this.$el)
+        this.show()
+    }
+    /**
+     * 显示
+     */
+    show(): void {
+        render(this.instance, this.$el)
+    }
+    /**
+     * 隐藏
+     */
+    hide(): void {
+        render(null, this.$el)
+        document.body.removeChild(this.$el)
+        this.$el = null
+        this.instance = null
+        delete this.$el
+        delete this.instance
+    }
 }
+
+export default Box

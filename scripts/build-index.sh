@@ -29,6 +29,7 @@ for m in $dir; do
         fi
 
         echo '
+        import { App } from "vue"
         import '$first$second' from "'./$fileName'";' >packages/$m/index.ts
         if [ -f "./packages/$m/$m.ts" ]; then
             echo 'import '$first$second'Plugin from "'./$m'";' >>packages/$m/index.ts
@@ -36,10 +37,10 @@ for m in $dir; do
         echo '
 
         /* istanbul ignore next */
-        '$first$second'.install = function (Vue) {
-            Vue.component('$first$second'.name, '$first$second');' >>packages/$m/index.ts
+        '$first$second'.install = (app: App): void => {
+            app.component('$first$second'.name, '$first$second');' >>packages/$m/index.ts
         if [ -f "./packages/$m/$m.ts" ]; then
-            echo 'Vue.prototype.$'$m' = Vue.$'$m' = '$first$second'Plugin;' >>packages/$m/index.ts
+            echo 'app.config.globalProperties.$'$m' = '$first$second'Plugin;' >>packages/$m/index.ts
         fi
         echo '
         };
