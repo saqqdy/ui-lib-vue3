@@ -6,7 +6,7 @@ argv=${argvs[0]}
 if [ $argv == "--deploy" ]; then
     git tag | grep "." | xargs git tag -d
 fi
-ver=$(node ./bin/push.js $*)
+ver=$(node ./scripts/push.js $*)
 let "errors |= $?"
 if [ $errors == '0' ] && [ $argv == "--deploy" ]; then
     echo "\033[32mv${ver}发版已完成!\033[0m"

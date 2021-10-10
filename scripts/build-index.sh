@@ -18,7 +18,7 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        touch packages/$m/index.js
+        touch packages/$m/index.ts
         if [ -f "./packages/$m/$m.vue" ]; then
             fileName="$m.vue"
         elif [ -f "./packages/$m/index.vue" ]; then
@@ -29,25 +29,25 @@ for m in $dir; do
         fi
 
         echo '
-        import '$first$second' from "'./$fileName'";' >packages/$m/index.js
-        if [ -f "./packages/$m/$m.js" ]; then
-            echo 'import '$first$second'Plugin from "'./$m.js'";' >>packages/$m/index.js
+        import '$first$second' from "'./$fileName'";' >packages/$m/index.ts
+        if [ -f "./packages/$m/$m.ts" ]; then
+            echo 'import '$first$second'Plugin from "'./$m'";' >>packages/$m/index.ts
         fi
         echo '
 
         /* istanbul ignore next */
         '$first$second'.install = function (Vue) {
-            Vue.component('$first$second'.name, '$first$second');' >>packages/$m/index.js
-        if [ -f "./packages/$m/$m.js" ]; then
-            echo 'Vue.prototype.$'$m' = Vue.$'$m' = '$first$second'Plugin;' >>packages/$m/index.js
+            Vue.component('$first$second'.name, '$first$second');' >>packages/$m/index.ts
+        if [ -f "./packages/$m/$m.ts" ]; then
+            echo 'Vue.prototype.$'$m' = Vue.$'$m' = '$first$second'Plugin;' >>packages/$m/index.ts
         fi
         echo '
         };
 
-        export default '$first$second';' >>packages/$m/index.js
-        npx prettier --write packages/$m/index.js
+        export default '$first$second';' >>packages/$m/index.ts
+        npx prettier --write packages/$m/index.ts
 
-        echo '"'$m'": "packages/'$m'/index.js",' >>components.json
+        echo '"'$m'": "packages/'$m'/index.ts",' >>components.json
     fi
 
 done

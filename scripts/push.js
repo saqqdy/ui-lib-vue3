@@ -3,8 +3,8 @@ const path = require('path')
 const colors = require('colors')
 const cwd = process.cwd()
 const pkg = fs.readFileSync(path.join(cwd, 'package.json'))
-const commandSync = require(path.join(cwd, 'bin/commandSync'))
-const sum = require(path.join(cwd, 'bin/getStatus'))()
+const commandSync = require(path.join(cwd, 'scripts/commandSync'))
+const sum = require(path.join(cwd, 'scripts/getStatus'))()
 const version = JSON.parse(pkg).version
 const argvs = process.argv.slice(2)
 if (!version) {

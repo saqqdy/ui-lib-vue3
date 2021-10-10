@@ -10,7 +10,7 @@ Object.keys(Components).forEach(function (key) {
     externals[`ui-lib-vue3/packages/${key}`] = `ui-lib-vue3/lib/${key}`
 })
 utilsList.forEach(function (file) {
-    file = path.basename(file, '.js')
+    file = path.basename(file, '.ts')
     externals[`ui-lib-vue3/packages/utils/${file}`] = `ui-lib-vue3/lib/${file}`
 })
 

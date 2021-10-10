@@ -19,7 +19,7 @@ const getOutFile = (name, dir = 'dist') => {
 
 export default [
     {
-        input: path.resolve(__dirname, '../packages/index.js'),
+        input: path.resolve(__dirname, '../packages/index.ts'),
         output: {
             format: 'es',
             file: 'dist/index.esm.js',

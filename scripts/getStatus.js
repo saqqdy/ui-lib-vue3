@@ -1,6 +1,6 @@
 const path = require('path')
 const cwd = process.cwd()
-const commandSync = require(path.join(cwd, 'bin/commandSync'))
+const commandSync = require(path.join(cwd, 'scripts/commandSync'))
 
 module.exports = () => {
     const out = commandSync('git', ['status', '-s', '--no-column', 'lib']).stdout.replace(/(^\s+|\n*$)/g, '')

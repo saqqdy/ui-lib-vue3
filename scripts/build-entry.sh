@@ -1,6 +1,6 @@
 dir=$(ls -l ./packages | awk '/^d/ {print $NF}')
-touch packages/index.js
-echo "import pkg from '../package.json';" >packages/index.js
+touch packages/index.ts
+echo "import pkg from '../package.json';" >packages/index.ts
 
 for m in $dir; do
 
@@ -19,7 +19,7 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "import $first$second from './$m';" >>packages/index.js
+        echo "import $first$second from './$m';" >>packages/index.ts
     fi
 done
 
@@ -28,7 +28,7 @@ echo "
 // import filters from '../src/filters';
 // import plugins from '../src/plugins';
 
-const install = function (Vue, opts = {}) {" >>packages/index.js
+const install = function (Vue, opts = {}) {" >>packages/index.ts
 
 for m in $dir; do
 
@@ -47,9 +47,9 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     # -a=与 -o=或 && ||
-    # if [ ! -f "./packages/$m/$m.js" ]; then
+    # if [ ! -f "./packages/$m/$m.ts" ]; then
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "Vue.component($first$second.name, $first$second);" >>packages/index.js
+        echo "Vue.component($first$second.name, $first$second);" >>packages/index.ts
     fi
 done
 
@@ -57,7 +57,7 @@ echo "
 Vue.prototype.\$UILIBVUE3 = {
     size: opts.size || '',
     zIndex: opts.zIndex || 5000,
-};" >>packages/index.js
+};" >>packages/index.ts
 
 for m in $dir; do
 
@@ -75,10 +75,10 @@ for m in $dir; do
     first=$(echo $result | cut -c1 | tr [a-z] [A-Z])
     second=$(echo $result | cut -c2-)
 
-    if [ -f "./packages/$m/$m.js" ]; then
-        fileName="$m.js"
-        # echo "Vue.prototype.\$$result = (...args) => $first$second.apply(Vue.prototype, [Vue, ...args]);" >>packages/index.js
-        echo "Vue.prototype.\$$result = Vue.\$$result = $first$second;" >>packages/index.js
+    if [ -f "./packages/$m/$m.ts" ]; then
+        fileName="$m.ts"
+        # echo "Vue.prototype.\$$result = (...args) => $first$second.apply(Vue.prototype, [Vue, ...args]);" >>packages/index.ts
+        echo "Vue.prototype.\$$result = Vue.\$$result = $first$second;" >>packages/index.ts
     fi
 done
 
@@ -86,7 +86,7 @@ echo "
 // Vue.use(directive);
 // Vue.use(filters);
 // Vue.use(plugins);
-};" >>packages/index.js
+};" >>packages/index.ts
 echo "
 /* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
@@ -96,7 +96,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
     version: pkg.version,
 	author: pkg.author.name,
-	install," >>packages/index.js
+	install," >>packages/index.ts
 
 for m in $dir; do
 
@@ -115,9 +115,9 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "$first$second," >>packages/index.js
+        echo "$first$second," >>packages/index.ts
     fi
 done
 
-echo "}" >>packages/index.js
-npx prettier --write packages/index.js
+echo "}" >>packages/index.ts
+npx prettier --write packages/index.ts

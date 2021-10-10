@@ -29,7 +29,7 @@ if [[ $m != '' ]]; then
 
     mkdir packages/$m
     touch packages/$m/$m.vue
-    touch packages/$m/index.js
+    touch packages/$m/index.ts
 
     echo '
     import '$first$second' from "'./$m.vue'";
@@ -39,7 +39,7 @@ if [[ $m != '' ]]; then
         Vue.component('$first$second'.name, '$first$second');
     };
 
-    export default '$first$second';' >packages/$m/index.js
+    export default '$first$second';' >packages/$m/index.ts
 
     echo '
     <template>
@@ -63,7 +63,7 @@ if [[ $m != '' ]]; then
     }
     </script>' >packages/$m/$m.vue
 
-    npx prettier --write packages/$m/index.js
+    npx prettier --write packages/$m/index.ts
     npx prettier --write packages/$m/$m.vue
 fi
 npx prettier --write components.json
