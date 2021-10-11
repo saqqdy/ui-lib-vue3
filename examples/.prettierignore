@@ -1,0 +1,7 @@
+/.git/
+lib
+dist
+*.bak
+*_bak
+
+stats.html

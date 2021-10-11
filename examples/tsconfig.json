@@ -1,0 +1,25 @@
+{
+	"extends": "../tsconfig.json",
+	"include": ["./**/*.ts", "typings", "./*.d.ts"],
+	"exclude": ["node_modules", "**/__tests__"],
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"strict": false,
+		"jsx": "preserve",
+		"importHelpers": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"sourceMap": true,
+		"baseUrl": ".",
+		"allowJs": true,
+		"types": ["webpack-env", "mocha", "chai"],
+		"paths": {
+			"@/*": ["src/*"],
+			"@/package": ["./package.json"]
+		},
+		"lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+	}
+}
