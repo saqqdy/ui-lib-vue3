@@ -24,8 +24,8 @@ export default {
             mHeight: null,
             max: false
         }
-    },
-    mounted() {},
-    methods: {}
+    }
+    // mounted() {},
+    // methods: {}
 }
 </script>

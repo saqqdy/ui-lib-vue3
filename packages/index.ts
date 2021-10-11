@@ -1,6 +1,6 @@
 import { version, author } from '../package.json'
 import Box from './box'
-import Button from './button/index'
+import Button from './button'
 
 // import directive from '../src/directive';
 // import filters from '../src/filters';

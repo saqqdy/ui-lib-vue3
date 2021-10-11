@@ -1,5 +1,4 @@
-
 packages:
-  - 'packages/**'
-  - '!packages/__mocks__'
-  - '!**/__tests__/**'
+    - 'packages/**'
+    - '!packages/__mocks__'
+    - '!**/__tests__/**'
