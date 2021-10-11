@@ -1,21 +1,25 @@
 {
- "compilerOptions": {
-   "module": "ESNext",
-   "declaration": true,
-   "noImplicitAny": false,
-   "removeComments": true,
-   "moduleResolution": "node",
-   "esModuleInterop": true,
-   "jsx": "preserve",
-   "noLib": false,
-   "target": "es6",
-   "sourceMap": true,
-   "lib": [
-     "ESNext", "DOM"
-   ],
-   "allowSyntheticDefaultImports": true
- },
- "exclude": [
-   "node_modules"
- ]
+    "compilerOptions": {
+        "allowJs": true,
+        "strict": true,
+        "module": "ESNext",
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "jsx": "preserve",
+        "noLib": false,
+        "target": "es6",
+        "sourceMap": true,
+        "lib": ["ESNext", "DOM"],
+        "allowSyntheticDefaultImports": true,
+        "noImplicitOverride": true,
+        "noUnusedLocals": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules/**", "**/__tests__", "temp"]
 }

@@ -11,9 +11,13 @@ module.exports = {
                 modules: false
                 // proposals: true,
             }
-        ]
+        ],
+        '@babel/typescript'
     ],
     plugins: [
+        '@vue/babel-plugin-jsx',
+        '@babel/proposal-class-properties',
+        '@babel/transform-runtime',
         [
             'import',
             {
@@ -23,7 +27,15 @@ module.exports = {
                 camel2DashComponentName: false
             },
             'js-cool'
-        ]
+        ],
+        ['@babel/plugin-proposal-private-property-in-object', { loose: false }],
+        ['@babel/plugin-proposal-private-methods', { loose: false }]
+    ],
+    overrides: [
+        {
+            test: /\.vue$/,
+            plugins: ['@babel/transform-typescript']
+        }
     ],
     env: {
         utils: {

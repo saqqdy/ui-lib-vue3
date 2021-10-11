@@ -9,7 +9,10 @@ import { nextIndex } from 'ui-lib-vue3/packages/utils/nextIndex'
 export default {
     name: 'UiButton',
     props: {
-        type: String,
+        type: {
+            type: String,
+            default: 'button'
+        },
         disabled: Boolean
     },
     data() {

@@ -1,0 +1,5 @@
+
+packages:
+  - 'packages/**'
+  - '!packages/__mocks__'
+  - '!**/__tests__/**'

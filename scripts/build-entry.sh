@@ -1,6 +1,6 @@
 dir=$(ls -l ./packages | awk '/^d/ {print $NF}')
 touch packages/index.ts
-echo "import pkg from '../package.json';" >packages/index.ts
+echo "import { version, author } from '../package.json';" >packages/index.ts
 
 for m in $dir; do
 
@@ -28,7 +28,7 @@ echo "
 // import filters from '../src/filters';
 // import plugins from '../src/plugins';
 
-const install = function (Vue, opts = {}) {" >>packages/index.ts
+const install = function (app, opts = {}) {" >>packages/index.ts
 
 for m in $dir; do
 
@@ -49,12 +49,12 @@ for m in $dir; do
     # -a=与 -o=或 && ||
     # if [ ! -f "./packages/$m/$m.ts" ]; then
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "Vue.component($first$second.name, $first$second);" >>packages/index.ts
+        echo "app.component($first$second.name, $first$second);" >>packages/index.ts
     fi
 done
 
 echo "
-Vue.prototype.\$UILIBVUE3 = {
+app.config.globalProperties.\$UILIBVUE3 = {
     size: opts.size || '',
     zIndex: opts.zIndex || 5000,
 };" >>packages/index.ts
@@ -77,25 +77,20 @@ for m in $dir; do
 
     if [ -f "./packages/$m/$m.ts" ]; then
         fileName="$m.ts"
-        # echo "Vue.prototype.\$$result = (...args) => $first$second.apply(Vue.prototype, [Vue, ...args]);" >>packages/index.ts
-        echo "Vue.prototype.\$$result = Vue.\$$result = $first$second;" >>packages/index.ts
+        echo "app.config.globalProperties.\$$result = $first$second;" >>packages/index.ts
     fi
 done
 
 echo "
-// Vue.use(directive);
-// Vue.use(filters);
-// Vue.use(plugins);
+// app.use(directive);
+// app.use(filters);
+// app.use(plugins);
 };" >>packages/index.ts
 echo "
-/* istanbul ignore if */
-if (typeof window !== 'undefined' && window.Vue) {
-	install(window.Vue);
-}
 
 export default {
-    version: pkg.version,
-	author: pkg.author.name,
+    version: version,
+	author: author.name,
 	install," >>packages/index.ts
 
 for m in $dir; do

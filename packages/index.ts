@@ -1,34 +1,29 @@
-import pkg from '../package.json'
+import { version, author } from '../package.json'
 import Box from './box'
-import Button from './button'
+import Button from './button/index'
 
 // import directive from '../src/directive';
 // import filters from '../src/filters';
 // import plugins from '../src/plugins';
 
-const install = function (Vue, opts = {}) {
-    Vue.component(Box.name, Box)
-    Vue.component(Button.name, Button)
+const install = function (app, opts = {}) {
+    app.component(Box.name, Box)
+    app.component(Button.name, Button)
 
-    Vue.prototype.$UILIBVUE3 = {
+    app.config.globalProperties.$UILIBVUE3 = {
         size: opts.size || '',
         zIndex: opts.zIndex || 5000
     }
-    Vue.prototype.$box = Vue.$box = Box
+    app.config.globalProperties.$box = Box
 
-    // Vue.use(directive);
-    // Vue.use(filters);
-    // Vue.use(plugins);
-}
-
-/* istanbul ignore if */
-if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue)
+    // app.use(directive);
+    // app.use(filters);
+    // app.use(plugins);
 }
 
 export default {
-    version: pkg.version,
-    author: pkg.author.name,
+    version: version,
+    author: author.name,
     install,
     Box,
     Button
