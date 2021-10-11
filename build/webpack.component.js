@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -21,7 +22,7 @@ module.exports = {
         libraryTarget: 'commonjs2'
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.ts', '.vue', '.json'],
         alias: config.alias,
         modules: ['node_modules']
     },
@@ -34,14 +35,21 @@ module.exports = {
         minimize: true,
         minimizer: [
             new TerserPlugin({
-                test: /\.js(\?.*)?$/i
+                test: /\.js(\?.*)?$/i,
+                parallel: true,
+                extractComments: false
+            }),
+            // 注意位置，必须放在 TerserPlugin 后面，否则生成的注释描述会被 TerserPlugin 或其它压缩插件清掉
+            new webpack.BannerPlugin({
+                entryOnly: true, // 是否仅在入口包中输出 banner 信息
+                banner: config.bannerText
             })
         ]
     },
     module: {
         rules: [
             {
-                test: /\.(jsx?|babel|es6)$/,
+                test: /\.(jsx?|tsx?|babel|es6)$/,
                 include: process.cwd(),
                 exclude: config.jsexclude,
                 loader: 'babel-loader'

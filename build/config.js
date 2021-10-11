@@ -27,6 +27,11 @@ externals = [
 exports.externals = externals
 exports.version = pkg.version
 
+exports.banner = '/*!\n' + ' * ' + pkg.name + ' v' + pkg.version + '\n' + ' * ' + pkg.description + '\n' + ' * (c) 2021-' + new Date().getFullYear() + ' saqqdy \n' + ' * Released under the MIT License.\n' + ' */'
+exports.bannerText = pkg.name + ' v' + pkg.version + '\n' + pkg.description + '\n' + '(c) 2021-' + new Date().getFullYear() + ' saqqdy \n' + 'Released under the MIT License.'
+exports.externals = externals
+exports.version = pkg.version
+
 exports.alias = {
     '@': path.resolve(__dirname, '../src'),
     packages: path.resolve(__dirname, '../packages'),

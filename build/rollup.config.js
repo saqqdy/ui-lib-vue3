@@ -1,6 +1,7 @@
 import vue from 'rollup-plugin-vue'
 import css from 'rollup-plugin-css-only'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import json from '@rollup/plugin-json'
 import esbuild from 'rollup-plugin-esbuild'
 import path from 'path'
 import pkg from '../package.json'
@@ -44,11 +45,13 @@ export default Object.keys(components).map(key => ({
     ],
     plugins: [
         css(),
+        nodeResolve(),
+        // commonjs(),
+        json(),
         vue({
             target: 'browser',
             css: false
         }),
-        nodeResolve(),
         esbuild()
     ],
     external(id) {

@@ -1,9 +1,10 @@
 import vue from 'rollup-plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import json from '@rollup/plugin-json'
+import esbuild from 'rollup-plugin-esbuild'
 import path from 'path'
 // import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
+// import { terser } from 'rollup-plugin-terser'
 import pkg from '../package.json'
 
 const deps = Object.keys(pkg.dependencies)
@@ -31,7 +32,6 @@ export default [
             }
         },
         plugins: [
-            terser(),
             nodeResolve(),
             // commonjs(),
             json(),
@@ -39,7 +39,8 @@ export default [
                 target: 'browser',
                 css: false,
                 exposeFilename: false
-            })
+            }),
+            esbuild()
         ],
         external(id) {
             return /^vue/.test(id) || deps.some(k => new RegExp('^' + k).test(id))
