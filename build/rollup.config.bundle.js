@@ -9,10 +9,10 @@ import pkg from '../package.json'
 
 const deps = Object.keys(pkg.dependencies)
 
-const noWlPrefixFile = /(utils|styles|hooks|locale)/
+const noPrefixFile = /(utils|styles|hooks|locale)/
 const getOutFile = (name, dir = 'dist') => {
     const compName = name.split('/')[1]
-    if (noWlPrefixFile.test(name)) {
+    if (noPrefixFile.test(name)) {
         return `${dir}/${compName}.js`
     }
     return `${dir}/${compName}.js`
@@ -26,7 +26,7 @@ export default [
             file: 'dist/index.esm.js',
             paths(id) {
                 if (/^ui-lib-vue3\/packages/.test(id)) {
-                    if (noWlPrefixFile.test(id)) return id.replace('ui-lib-vue3/packages/', 'ui-lib-vue3/dist/')
+                    if (noPrefixFile.test(id)) return id.replace('ui-lib-vue3/packages/', 'ui-lib-vue3/dist/')
                     return id.replace('ui-lib-vue3/packages/', 'ui-lib-vue3/dist/')
                 }
             }
