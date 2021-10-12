@@ -6,6 +6,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const cssnano = require('cssnano')
 const less = require('gulp-less')
 const autoprefixer = require('gulp-autoprefixer')
+const cleanCSS = require('gulp-clean-css')
 const plugins = [
     cssnano({
         preset: [
@@ -34,7 +35,7 @@ const plugins = [
 ]
 
 function compile() {
-    return src('./packages/style/*.less')
+    return src('./packages/styles/*.less')
         .pipe(less())
         .pipe(
             autoprefixer({
@@ -42,20 +43,21 @@ function compile() {
             })
         )
         .pipe(postcss(plugins, {}))
-        .pipe(dest('./lib/style'))
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(dest('./dist/styles'))
 }
 
 const concatCSS = series(compile, function (cb) {
-    src(['./lib/style/*.css']).pipe(sourcemaps.init()).pipe(concat('index.css')).pipe(postcss(plugins, {})).pipe(sourcemaps.write('.')).pipe(dest('./lib/style'))
+    src(['./dist/styles/*.css']).pipe(sourcemaps.init()).pipe(concat('index.css')).pipe(postcss(plugins, {})).pipe(sourcemaps.write('.')).pipe(dest('./dist/styles'))
     cb()
 })
 
 // function copyfont() {
-// 	return src('src/fonts/**').pipe(dest('./lib/fonts'));
+// 	return src('src/fonts/**').pipe(dest('./dist/fonts'));
 // }
 
 // function copyimage() {
-// 	return src('src/img/**').pipe(dest('./lib/img'));
+// 	return src('src/img/**').pipe(dest('./dist/img'));
 // }
 
 exports.compile = compile
@@ -64,7 +66,7 @@ exports.concatCSS = concatCSS
 // exports.copyimage = copyimage;
 exports.watch = function () {
     // You can use a single task
-    watch('./packages/style/*.less', concatCSS)
+    watch('./packages/styles/*.less', concatCSS)
 }
 // exports.build = series(compile, copyfont);
 // exports.default = series(concatCSS, copyfont);

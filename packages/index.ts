@@ -6,7 +6,7 @@ import Button from './button'
 // import filters from '../src/filters';
 // import plugins from '../src/plugins';
 
-const install = function (app, opts = {}) {
+const install = (app, opts = {}) => {
     app.component(Box.name, Box)
     app.component(Button.name, Button)
 

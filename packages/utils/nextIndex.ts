@@ -2,6 +2,8 @@
 /**
  *
  */
+const num = 8888
+
 export function nextIndex() {
-    return 8888
+    return num
 }

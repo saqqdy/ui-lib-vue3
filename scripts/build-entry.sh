@@ -28,7 +28,7 @@ echo "
 // import filters from '../src/filters';
 // import plugins from '../src/plugins';
 
-const install = function (app, opts = {}) {" >>packages/index.ts
+const install = (app, opts = {}) => {" >>packages/index.ts
 
 for m in $dir; do
 

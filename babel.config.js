@@ -55,7 +55,7 @@ module.exports = {
                     {
                         root: ['ui-lib-vue3'],
                         alias: {
-                            '@ui-lib-vue3': 'ui-lib-vue3/lib'
+                            '@ui-lib-vue3': 'ui-lib-vue3/dist'
                         }
                     }
                 ]
