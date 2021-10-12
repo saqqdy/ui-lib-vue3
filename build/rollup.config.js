@@ -13,9 +13,9 @@ const noPrefixFile = /(utils|styles|hooks)/
 const getOutFile = (name, dir = 'dist') => {
     const compName = name.split('/')[1]
     if (noPrefixFile.test(name)) {
-        return `${dir}/${compName}.js`
+        return `${dir}/${compName}/index.js`
     }
-    return `${dir}/${compName}.js`
+    return `${dir}/${compName}/index.js`
 }
 
 export default Object.keys(components).map(key => ({
@@ -35,6 +35,7 @@ export default Object.keys(components).map(key => ({
             format: 'cjs',
             file: getOutFile(components[key], 'dist'),
             exports: 'named',
+            // exports: 'auto',
             paths(id) {
                 if (/^ui-lib-vue3\/packages/.test(id)) {
                     if (noPrefixFile.test(id)) return id.replace('ui-lib-vue3/packages/', 'ui-lib-vue3/dist/')

@@ -1,6 +1,9 @@
 import { createApp } from 'vue';
 import { ElProgress, ElSkeleton, ElRow, ElCol, ElButton, ElCarousel, ElForm, ElInput, ElSelect, ElTooltip, ElMessage, ElMessageBox } from 'element-plus';
-import UiLibVue3 from '../..';
+// import UiLibVue3 from '../..';
+// import UiButton from '../../dist/index.esm.js';
+import Button from '../../dist/button';
+import 'ui-lib-vue3/dist/styles/index.css';
 import plugins from '@/plugins';
 import filters from '@/filters';
 import components from '@/components';
@@ -10,8 +13,11 @@ import store, { key } from './store';
 
 const app = createApp(App);
 app.config.globalProperties.$ELEMENT = { size: 'small', zIndex: 5000 };
-console.log(UiLibVue3);
-app.use(UiLibVue3);
+
+// console.log(UiLibVue3);
+console.log(Button);
+
+// app.use(UiLibVue3);
 app.use(ElProgress);
 app.use(ElSkeleton);
 app.use(ElRow);

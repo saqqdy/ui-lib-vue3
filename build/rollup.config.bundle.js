@@ -13,9 +13,9 @@ const noPrefixFile = /(utils|styles|hooks|locale)/
 const getOutFile = (name, dir = 'dist') => {
     const compName = name.split('/')[1]
     if (noPrefixFile.test(name)) {
-        return `${dir}/${compName}.js`
+        return `${dir}/${compName}/index.js`
     }
-    return `${dir}/${compName}.js`
+    return `${dir}/${compName}/index.js`
 }
 
 export default [

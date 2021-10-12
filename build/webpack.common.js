@@ -29,7 +29,7 @@ module.exports = {
         filename: 'index.cmd.js',
         chunkFilename: '[id].js',
         libraryExport: 'default',
-        library: 'UILIBVUE3',
+        // library: 'UILIBVUE3',
         libraryTarget: 'commonjs2',
         sourceMapFilename: 'index.cmd.js.map'
     },
@@ -63,12 +63,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(jsx?|tsx?|babel|es6)$/,
-                include: process.cwd(),
-                exclude: config.jsexclude,
-                loader: 'babel-loader'
-            },
-            {
                 test: /\.vue$/,
                 loader: 'vue-loader'
                 // options: {
@@ -76,6 +70,12 @@ module.exports = {
                 // 		preserveWhitespace: false,
                 // 	},
                 // },
+            },
+            {
+                test: /\.(jsx?|tsx?|babel|es6)$/,
+                include: process.cwd(),
+                exclude: config.jsexclude,
+                loader: 'babel-loader'
             },
             {
                 test: /\.(css|less)$/,

@@ -35,8 +35,8 @@ if [[ $m != '' ]]; then
     import '$first$second' from "'./$m.vue'";
 
     /* istanbul ignore next */
-    '$first$second'.install = function (Vue) {
-        Vue.component('$first$second'.name, '$first$second');
+    '$first$second'.install = (app, option) => {
+        app.component('$first$second'.name, '$first$second');
     };
 
     export default '$first$second';' >packages/$m/index.ts

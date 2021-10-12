@@ -4,7 +4,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 // import legacy from '@vitejs/plugin-legacy';
 import visualizer from 'rollup-plugin-visualizer';
-import VitePluginElementPlus from 'vite-plugin-element-plus';
+import Components from 'unplugin-vue-components/vite';
+import { UiLibVue3Resolver } from './config/resolvers';
 // import { injectHtml } from 'vite-plugin-html';
 const { transpileDependencies, proxy, externals, pluginOptions, chainWebpack } = require('config-lite')(__dirname);
 // import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
@@ -34,9 +35,12 @@ export default defineConfig(({ mode }) => ({
 	},
 	plugins: [
 		vue(),
-		VitePluginElementPlus({
-			// useSource: true,
-			format: mode === 'development' ? 'esm' : 'cjs',
+		Components({
+			resolvers: [
+				UiLibVue3Resolver({
+					importStyle: 'css',
+				}),
+			],
 		}),
 		process.env.ANALAYZ_REPORT &&
 			visualizer({

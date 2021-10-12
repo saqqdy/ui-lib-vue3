@@ -19,7 +19,7 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "import $first$second from './$m';" >>packages/index.ts
+        echo "import Ui$first$second from './$m';" >>packages/index.ts
     fi
 done
 
@@ -49,7 +49,7 @@ for m in $dir; do
     # -a=与 -o=或 && ||
     # if [ ! -f "./packages/$m/$m.ts" ]; then
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "app.component($first$second.name, $first$second);" >>packages/index.ts
+        echo "app.component(Ui$first$second.name, Ui$first$second);" >>packages/index.ts
     fi
 done
 
@@ -110,7 +110,7 @@ for m in $dir; do
     second=$(echo $result | cut -c2-)
 
     if [ $m != "utils" ] && [ $m != "styles" ]; then
-        echo "$first$second," >>packages/index.ts
+        echo "Ui$first$second," >>packages/index.ts
     fi
 done
 

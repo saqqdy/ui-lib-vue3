@@ -7,11 +7,11 @@ var Components = require('../components.json'),
 externals = {}
 
 Object.keys(Components).forEach(function (key) {
-    externals[`ui-lib-vue3/packages/${key}`] = `ui-lib-vue3/lib/${key}`
+    externals[`ui-lib-vue3/packages/${key}`] = `ui-lib-vue3/dist/${key}`
 })
 utilsList.forEach(function (file) {
     file = path.basename(file, '.ts')
-    externals[`ui-lib-vue3/packages/utils/${file}`] = `ui-lib-vue3/lib/${file}`
+    externals[`ui-lib-vue3/packages/utils/${file}`] = `ui-lib-vue3/dist/utils/${file}`
 })
 
 externals = [
@@ -48,9 +48,9 @@ exports.vue = {
 
 exports.vueUmd = {
     root: 'Vue',
-    commonjs: 'Vue',
-    commonjs2: 'Vue',
-    amd: 'Vue'
+    commonjs: 'vue',
+    commonjs2: 'vue',
+    amd: 'vue'
 }
 
 exports.jsexclude = /node_modules/

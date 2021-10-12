@@ -1,14 +1,14 @@
 import { version, author } from '../package.json'
-import Box from './box'
-import Button from './button'
+import UiBox from './box'
+import UiButton from './button'
 
 // import directive from '../src/directive';
 // import filters from '../src/filters';
 // import plugins from '../src/plugins';
 
 const install = (app, opts = {}) => {
-    app.component(Box.name, Box)
-    app.component(Button.name, Button)
+    app.component(UiBox.name, UiBox)
+    app.component(UiButton.name, UiButton)
 
     app.config.globalProperties.$UILIBVUE3 = {
         size: opts.size || '',
@@ -25,6 +25,6 @@ export default {
     version: version,
     author: author.name,
     install,
-    Box,
-    Button
+    UiBox,
+    UiButton
 }
