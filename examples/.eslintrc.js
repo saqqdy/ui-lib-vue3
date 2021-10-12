@@ -13,5 +13,6 @@ module.exports = extend(true, config, {
 			},
 		],
 		'@typescript-eslint/no-explicit-any': 0,
+		'@typescript-eslint/no-var-requires': 0,
 	},
 });

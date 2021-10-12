@@ -2,10 +2,10 @@ import { join, resolve } from 'path';
 import fs from 'fs';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import legacy from '@vitejs/plugin-legacy';
+// import legacy from '@vitejs/plugin-legacy';
 import visualizer from 'rollup-plugin-visualizer';
 import VitePluginElementPlus from 'vite-plugin-element-plus';
-import { injectHtml } from 'vite-plugin-html';
+// import { injectHtml } from 'vite-plugin-html';
 const { transpileDependencies, proxy, externals, pluginOptions, chainWebpack } = require('config-lite')(__dirname);
 // import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
 process.env.VITE_APP_VERSION = String(Date.now());
